@@ -1,0 +1,17 @@
+Objeivos
+
+# Execução 100% em Terminal
+
+# Campeonato com 8 Times
+
+# Gerenciamento de Estatísticas Individuais
+
+# Todos se enfrentam 1 vez (Sem repetir)
+
+# Disputas Dinâmicas
+
+# Atributos Escaláveis
+
+# Exibição da Tabela a cada Rodada
+
+# Exibição do Time Campeão
