@@ -2,7 +2,7 @@ import random
 
 
 
-# Classe que vai servir de modelo para os times.
+# Class que vai servir de modelo para os times.
 class Time():
     # Atributos do time.
     def __init__(self, nome):
@@ -25,3 +25,20 @@ class Time():
 
         # valor do ponto defensivo pode ser dentre 1 até 5.
         self.ponto_defensivo = random.randint(1, 5)
+
+    
+    # Classe para gerenciar o campeonato e guardar a lista de times
+    class Campeonato():
+
+        def __init__(self, nome):
+            
+            self.nome_campeonato = nome
+            self.rodada = 0
+
+
+
+            self.times = [
+                Time("Brasil"), Time("Argentina"), Time("Espanha"),
+                Time("França"), Time("Uruguai"), Time("Inglaterra"),
+                Time("Italia"), Time("Alemanha"),
+            ]

@@ -1,10 +1,10 @@
-Objeivos
+Objetivos
 
 # Execução 100% em Terminal
 
-# Campeonato com 8 Times
+# Campeonato com 8 Times -  CONCLUÍDO
 
-# Gerenciamento de Estatísticas Individuais
+# Gerenciamento de Estatísticas Individuais - CONCLUÍDO
 
 # Todos se enfrentam 1 vez (Sem repetir)
 
