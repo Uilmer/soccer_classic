@@ -1,4 +1,6 @@
 import random
+# itertools para criar a combinação onde cada time se enfrenta.
+import itertools
 
 
 
@@ -15,7 +17,6 @@ class Time():
         self.derrotas = 0
         self.pontos = 0
         self.saldo_gols = 0
-
     
     # Método para randomizar os valores de atributo ofensivo e defensivo de cada time.
     def pontosDisoputa(self):
@@ -26,19 +27,69 @@ class Time():
         # valor do ponto defensivo pode ser dentre 1 até 5.
         self.ponto_defensivo = random.randint(1, 5)
 
+
+# Classe para gerenciar o campeonato e guardar a lista de times.
+class Campeonato():
+
+    def __init__(self,):
     
-    # Classe para gerenciar o campeonato e guardar a lista de times
-    class Campeonato():
+        self.nome_campeonato = "Copa Das Nações"
+        self.rodada = 0
+        # Lista de partidas.
+        self.disputas = []
+        # Lista para armazenar os times que vão jogar nessa rodada.
+        self.rodada_atual = []
+        # Lista para armazenar os times que vão jogar na proxima rodada.
+        self.proxima_rodada = []
 
-        def __init__(self, nome):
+        self.times = [
+            Time("Brasil"), Time("Argentina"), Time("Espanha"),
+            Time("França"), Time("Uruguai"), Time("Inglaterra"),
+            Time("Italia"), Time("Alemanha"),
+        ]
+        
+    # Método para criar as combinações onde cada time se enfrenta.
+    def jogosCampeonato(self):
+
+        # Cria um nova lista combinando os valores da lista self.times.
+        lista_jogos = list(itertools.combinations(self.times, 2))
+
+        # Define o atributo disputas da class para armazenar todos os jogos da competição.
+        self.disputas = lista_jogos
+
+    # Método para iniciar rodadas e gerenciar as disputas.
+    def iniciarRodada(self,):
+
+        # Separa os jogos em rodada_atual e proxima_rodada.
+        for jogo_atual in self.disputas:
+
+            # Criação do time_a e time_b baseado em jogo_atual[0] e jogo_atual[1].
+            time_a, time_b = jogo_atual
+
+            # Verifica se o time_a e time_b não estão na lista da rodada atual.
+            if time_a not in self.rodada_atual and time_b not in self.rodada_atual:
+                
+                # Adiciona o time_a e time_b na lista da rodada_atual.
+                self.rodada_atual.append(time_a)
+                self.rodada_atual.append(time_b)
+                
+                print(f"{time_a.nome} X {time_b.nome}")
             
-            self.nome_campeonato = nome
-            self.rodada = 0
+            else:
+
+                # Adiciona a disputa atual na lista proxima_rodada.
+                self.proxima_rodada.append(jogo_atual)
+        
 
 
 
-            self.times = [
-                Time("Brasil"), Time("Argentina"), Time("Espanha"),
-                Time("França"), Time("Uruguai"), Time("Inglaterra"),
-                Time("Italia"), Time("Alemanha"),
-            ]
+
+#----- PROGRAMA PRINCIPAL -----------#
+
+# Cria a variavel copa que é um objeto da class Campeonato. 
+obj_copa = Campeonato()
+
+# Chama o método jogosCampeonato do objeto copa.
+obj_copa.jogosCampeonato()
+# Chama o método iniciarRodada do objeto copa.
+obj_copa.iniciarRodada()
