@@ -80,6 +80,14 @@ class Campeonato():
                 # Adiciona a disputa atual na lista proxima_rodada.
                 self.proxima_rodada.append(jogo_atual)
         
+        # Limpa a lista rodada atual
+        self.rodada_atual = []
+        
+        # Atualiza a lista de disputas com os times que entraram na lista de proxima rodada
+        self.disputas = self.proxima_rodada
+
+        # Limpa a lista proxima rodada
+        self.proxima_rodada = []
 
 
 
