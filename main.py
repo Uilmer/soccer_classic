@@ -73,7 +73,8 @@ class Campeonato():
                 self.rodada_atual.append(time_a)
                 self.rodada_atual.append(time_b)
                 
-                print(f"{time_a.nome} X {time_b.nome}")
+                # Chama o método que vai iniciar de fato a partida.
+                self.iniciarPartida(time_a, time_b)
             
             else:
 
@@ -88,6 +89,39 @@ class Campeonato():
 
         # Limpa a lista proxima rodada
         self.proxima_rodada = []
+
+    # Método para iniciar o jogo atual, recebe como parametros time_a e time_b.
+    def iniciarPartida(self, time_a, time_b):
+
+        # Exibi qual é o jogo atual.
+        print(f"{time_a} X {time_b}")
+
+        #--- PREPARAÇÕES DA PARTIDA ---#
+
+        # Variavel para armazenar qual time está com a bola.
+        posse_da_bola = "time_a"
+
+        # O time atacante é o time que tem a posse da bola.
+        time_atacante, time_defensor = time_a, time_b
+
+        #--- iNICIANDO A PARTIDA ---#
+
+        # Laço e repetição para representar o tempo de jogo.
+        for i in range(10):
+
+            #--- Verificação para definir qual time está no ataque e qual time está defendendo. ---#
+
+            if  posse_da_bola == "time_a":
+                # time_a como atacante e time_b como defensor.
+                time_atacante, time_defensor = time_a, time_b
+
+            elif posse_da_bola == "time_b":
+                # time_b como atacante e time_a como defensor.
+                time_atacante, time_defensor = time_b, time_a
+            
+            #--- iNICIANDO AS DISPUTAS DE BOLA  ---# 
+            
+            
 
 
 
