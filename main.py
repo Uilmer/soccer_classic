@@ -27,7 +27,6 @@ class Time():
         # valor do ponto defensivo pode ser dentre 1 até 5.
         self.ponto_defensivo = random.randint(1, 5)
 
-
 # Classe para gerenciar o campeonato e guardar a lista de times.
 class Campeonato():
 
@@ -81,14 +80,29 @@ class Campeonato():
                 # Adiciona a disputa atual na lista proxima_rodada.
                 self.proxima_rodada.append(jogo_atual)
         
-        # Limpa a lista rodada atual
+        # Limpa a lista rodada atual.
         self.rodada_atual = []
         
-        # Atualiza a lista de disputas com os times que entraram na lista de proxima rodada
+        # Atualiza a lista de disputas com os times que entraram na lista de proxima rodada.
         self.disputas = self.proxima_rodada
 
-        # Limpa a lista proxima rodada
+        # Limpa a lista proxima rodada.
         self.proxima_rodada = []
+        
+    # Método para trocar a posse de bola.
+    def trocaPosseDeBola(self, posse_de_bola):
+
+        # Verificando qual time tem a  posse de bola atual.
+    
+        if posse_de_bola == "time_a":
+
+            # Se for o time_a ele passa a posse de bola para o time_b
+            return "time_b"
+        
+        elif posse_de_bola == "time_b":
+
+            # Se for o time_b ele passa a posse de bola para o time_a
+            return "time_a"
 
     # Método para iniciar o jogo atual, recebe como parametros time_a e time_b.
     def iniciarPartida(self, time_a, time_b):
