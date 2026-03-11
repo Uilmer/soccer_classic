@@ -19,7 +19,7 @@ class Time():
         self.saldo_gols = 0
     
     # Método para randomizar os valores de atributo ofensivo e defensivo de cada time.
-    def pontosDisoputa(self):
+    def pontosDisputa(self):
 
         # Valor do ponto ofensivo pode ser dentre 1 até 5. 
         self.ponto_ofensivo = random.randint(1, 5)
@@ -108,7 +108,7 @@ class Campeonato():
     def iniciarPartida(self, time_a, time_b):
 
         # Exibi qual é o jogo atual.
-        print(f"{time_a} X {time_b}")
+        print(f"{time_a.nome} X {time_b.nome}")
 
         #--- PREPARAÇÕES DA PARTIDA ---#
 
@@ -117,6 +117,9 @@ class Campeonato():
 
         # O time atacante é o time que tem a posse da bola.
         time_atacante, time_defensor = time_a, time_b
+
+        # Lista para armazenar o fluxo de disputa.
+        zonas_disputas = ["Meio_Campo", "Zaga", "Gol"]
 
         #--- iNICIANDO A PARTIDA ---#
 
@@ -135,6 +138,32 @@ class Campeonato():
             
             #--- iNICIANDO AS DISPUTAS DE BOLA  ---# 
             
+            # Laço para realizar todas as disputas.
+            for disputa in zonas_disputas:
+
+                # Chamando os métodos de cada time para gerar um valor aleatorio para as disputas.
+                time_atacante.pontosDisputa()
+                time_defensor.pontosDisputa()
+
+                # Se o ponto ofensivo do atacante for maior que o ponto defensivo do defensor.
+                # Aqui eu coloco 
+                if time_atacante.ponto_ofensivo > time_defensor.ponto_defensivo and disputa != "Gol":
+
+                    print(f"{time_atacante.nome} vence a disputa de {disputa}")
+                
+                elif time_defensor.ponto_defensivo >= time_atacante.ponto_ofensivo:
+
+                    print(f"{time_atacante.nome} falha na disputa de {disputa}")
+                    
+                    posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
+                    break
+                
+                elif time_atacante.ponto_ofensivo > time_defensor.ponto_defensivo and disputa == "Gol":
+
+                    print(f"GOOOOOOOOL! {time_atacante.nome} marca ")
+                    
+                    posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
+                    break
             
 
 
