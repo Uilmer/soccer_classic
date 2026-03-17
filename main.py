@@ -30,7 +30,7 @@ class Time():
 # Classe para gerenciar o campeonato e guardar a lista de times.
 class Campeonato():
 
-    def __init__(self,):
+    def __init__(self):
     
         self.nome_campeonato = "Copa Das Nações"
         self.rodada = 0
@@ -57,7 +57,7 @@ class Campeonato():
         self.disputas = lista_jogos
 
     # Método para iniciar rodadas e gerenciar as disputas.
-    def iniciarRodada(self,):
+    def iniciarRodada(self):
 
         # Separa os jogos em rodada_atual e proxima_rodada.
         for jogo_atual in self.disputas:
@@ -190,7 +190,6 @@ class Campeonato():
         # Chamando o método resultadoPartida para contabilizar o resultado da partida.
         self.resultadoPartida(time_a, time_b, gols_time_a, gols_time_b)
 
-
     # Método para entregar os resultados da partida.
     def resultadoPartida(self, time_a, time_b, gols_time_a, gols_time_b):
         
@@ -221,6 +220,26 @@ class Campeonato():
             time_a.pontos += 1
             time_b.pontos += 1
 
+# Método para "desenhar" a tabela do campeonato.
+    def tabelaCampeonato(self):
+        
+        # Cria uma lista baseada na lista self.times.
+        # Define os criterios, "Quem tem mais pontos ?", "3 times tem a mesma quantidade então olhe o proximo valor tambem..."
+        # Reverse para ordenar da maior quantidade para a menor. 
+        tabela = sorted(self.times, key=lambda t: (t.pontos, t.vitorias, t.saldo_gols), reverse=True)
+
+        # Cabeçalho da tabela.
+        print("\n       --TABELA DE CLASSIFICAÇÃO--")
+        # Percorre a lista tabela e ao mesmo tempo gera um contador(i) começando do número 1. 
+        for i, time in enumerate(tabela, 1):
+
+            # Exibe as informações de cada time, {time.nome:12} é para cada time ocupar o mesmo espaço(12).
+            print(f"{i}º {time.nome:12} | P:{time.pontos} | V:{time.vitorias} | E:{time.empates} | D:{time.derrotas} | SG:{time.saldo_gols}")
+
+
+
+
+
 
 #----- PROGRAMA PRINCIPAL -----------#
 
@@ -231,3 +250,4 @@ obj_copa = Campeonato()
 obj_copa.jogosCampeonato()
 # Chama o método iniciarRodada do objeto copa.
 obj_copa.iniciarRodada()
+obj_copa.tabelaCampeonado()
