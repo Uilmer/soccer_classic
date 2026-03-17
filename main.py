@@ -108,7 +108,7 @@ class Campeonato():
     def iniciarPartida(self, time_a, time_b):
 
         # Exibi qual é o jogo atual.
-        print(f"{time_a.nome} X {time_b.nome}")
+        print(f"\n{time_a.nome} X {time_b.nome}")
 
         #--- PREPARAÇÕES DA PARTIDA ---#
 
@@ -120,6 +120,10 @@ class Campeonato():
 
         # Lista para armazenar o fluxo de disputa.
         zonas_disputas = ["Meio_Campo", "Zaga", "Gol"]
+
+        # Variaveis para armazenar os gols de cada time
+        gols_time_a = 0
+        gols_time_b = 0
 
         #--- iNICIANDO A PARTIDA ---#
 
