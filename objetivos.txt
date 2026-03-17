@@ -1,17 +1,17 @@
-Objetivos
+Objetivos Do projeto.
 
-# Execução 100% em Terminal
+[x] Execução 100% em Terminal
 
-# Campeonato com 8 Times -  CONCLUÍDO
+[x] Campeonato com 8 Times — CONCLUÍDO
 
-# Gerenciamento de Estatísticas Individuais - CONCLUÍDO
+[x] Todos se enfrentam 1 vez (Sem repetir) — CONCLUÍDO
 
-# Todos se enfrentam 1 vez (Sem repetir)
+[x] Disputas Dinâmicas — CONCLUÍDO
 
-# Disputas Dinâmicas
+[ ] Atributos de cada Time Escaláveis — EM DESENVOLVIMENTO
 
-# Atributos Escaláveis
+[x] Gerenciamento de Estatísticas por Time — CONCLUÍDO
 
-# Exibição da Tabela a cada Rodada
+[x] Exibição da Tabela a cada Rodada — CONCLUÍDO
 
-# Exibição do Time Campeão
+[ ] Exibição do Time Campeão — PENDENTE
