@@ -250,4 +250,4 @@ obj_copa = Campeonato()
 obj_copa.jogosCampeonato()
 # Chama o método iniciarRodada do objeto copa.
 obj_copa.iniciarRodada()
-obj_copa.tabelaCampeonado()
+obj_copa.tabelaCampeonato()
