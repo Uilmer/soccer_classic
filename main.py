@@ -175,9 +175,13 @@ class Campeonato():
 
                         gols_time_b += 1
 
+                    # Atualiza o atributo saldo_gols do time.
+                    time_atacante.saldo_gols += 1
+
+                    # Realiza a troca da posse de bola.
                     posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
                     break
-            
+                    
 
 
 
