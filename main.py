@@ -165,7 +165,16 @@ class Campeonato():
                 elif time_atacante.ponto_ofensivo > time_defensor.ponto_defensivo and disputa == "Gol":
 
                     print(f"GOOOOOOOOL! {time_atacante.nome} marca ")
+
+                    # Verifica qual time fez o gol.
+                    if time_atacante == time_a:
+                        # Contabiliza o gol atualizando a variavel que armazena os gols do time.
+                        gols_time_a += 1
                     
+                    else:
+
+                        gols_time_b += 1
+
                     posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
                     break
             
