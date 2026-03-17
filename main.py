@@ -181,9 +181,36 @@ class Campeonato():
                     # Realiza a troca da posse de bola.
                     posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
                     break
-                    
 
+    # Método para entregar os resultados da partida.
+    def resultadoPartida(self, time_a, time_b, gols_time_a, gols_time_b):
+        
+        # Verifica o placar final do jogo.
 
+        # Vitoria time A.
+        if gols_time_a > gols_time_b:
+            # Acrescenta +1 ao atributo vitorias do time vencedor.
+            time_a.vitorias += 1
+            # Acrescenta +3 ao atributo pontos do time vencedor.
+            time_a.pontos += 3
+            # Acrescenta +1 no atributo derrota no time que perdeu.
+            time_b.derrotas += 1
+
+        # Vitoria time B.
+        elif gols_time_b > gols_time_a:
+
+            time_b.vitorias += 1
+            time_b.pontos += 3
+            time_a.derrotas += 1
+
+        # Empate.
+        else:
+            # Acrescenta ao atributo empate de cada time +1.
+            time_a.empates += 1
+            time_b.empates += 1
+
+            time_a.pontos += 1
+            time_b.pontos += 1
 
 
 #----- PROGRAMA PRINCIPAL -----------#
