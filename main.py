@@ -108,7 +108,7 @@ class Campeonato():
     def iniciarPartida(self, time_a, time_b):
 
         # Exibi qual é o jogo atual.
-        print(f"\n{time_a.nome} X {time_b.nome}")
+        print(f"\n      {time_a.nome} X {time_b.nome}\n")
 
         #--- PREPARAÇÕES DA PARTIDA ---#
 
@@ -181,6 +181,11 @@ class Campeonato():
                     # Realiza a troca da posse de bola.
                     posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
                     break
+            
+        # Mensagem fim de jogo.
+        print(f"\n  O árbitro apita!!! fim de jogo.")
+        # Exibir o placar final da disputa.
+        print(f"  {time_a.nome} {gols_time_a} X {gols_time_b} {time_b.nome}")
 
     # Método para entregar os resultados da partida.
     def resultadoPartida(self, time_a, time_b, gols_time_a, gols_time_b):
