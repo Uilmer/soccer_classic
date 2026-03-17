@@ -187,6 +187,10 @@ class Campeonato():
         # Exibir o placar final da disputa.
         print(f"  {time_a.nome} {gols_time_a} X {gols_time_b} {time_b.nome}")
 
+        # Chamando o método resultadoPartida para contabilizar o resultado da partida.
+        self.resultadoPartida(time_a, time_b, gols_time_a, gols_time_b)
+
+
     # Método para entregar os resultados da partida.
     def resultadoPartida(self, time_a, time_b, gols_time_a, gols_time_b):
         
