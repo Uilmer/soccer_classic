@@ -267,6 +267,8 @@ class Campeonato():
 
             # Chama o método iniciarRodada.
             self.iniciarRodada()
+            # Atualiza o atributo self.rodada
+            self.rodada += 1
             # Chama o método para exibir a tabela após o fim da rodada.
             self.tabelaCampeonato()
 
