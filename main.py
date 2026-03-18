@@ -229,10 +229,16 @@ class Campeonato():
     # Método para "desenhar" a tabela do campeonato.
     def tabelaCampeonato(self):
         
-        # Cria uma lista baseada na lista self.times.
-        # Define os criterios, "Quem tem mais pontos ?", "3 times tem a mesma quantidade então olhe o proximo valor tambem..."
-        # Reverse para ordenar da maior quantidade para a menor. 
-        tabela = sorted(self.times, key=lambda t: (t.pontos, t.vitorias, t.saldo_gols), reverse=True)
+        # Verifica se é o inicio do campeonato.
+        if self.rodada > 0:
+            # Cria uma lista baseada na lista self.times.
+            # Define os criterios, "Quem tem mais pontos ?", "3 times tem a mesma quantidade então olhe o proximo valor tambem..."
+            # Reverse para ordenar da maior quantidade para a menor. 
+            tabela = sorted(self.times, key=lambda t: (t.pontos, t.vitorias, t.saldo_gols), reverse=True)
+        
+        else:
+            # Ordena a lista por ordem alfabetica para exibição inicial.
+            tabela = sorted(self.times, key=lambda t: (t.nome))
 
         # Cabeçalho da tabela.
         print("\n       --TABELA DE CLASSIFICAÇÃO--\n")
