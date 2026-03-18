@@ -233,12 +233,12 @@ class Campeonato():
         tabela = sorted(self.times, key=lambda t: (t.pontos, t.vitorias, t.saldo_gols), reverse=True)
 
         # Cabeçalho da tabela.
-        print("\n       --TABELA DE CLASSIFICAÇÃO--")
+        print("\n       --TABELA DE CLASSIFICAÇÃO--\n")
         # Percorre a lista tabela e ao mesmo tempo gera um contador(i) começando do número 1. 
         for i, time in enumerate(tabela, 1):
 
             # Exibe as informações de cada time, {time.nome:12} é para cada time ocupar o mesmo espaço(12).
-            print(f"{i}º {time.nome:12} | P:{time.pontos} | V:{time.vitorias} | E:{time.empates} | D:{time.derrotas} | SG:{time.saldo_gols}")
+            print(f"{i}º {time.nome:12} | P:{time.pontos:2} | V:{time.vitorias:2} | E:{time.empates:2} | D:{time.derrotas:2} | SG:{time.saldo_gols:2} |")
 
     # Método para rodar o campeonato completo.
     def iniciarCampeonato(self):
@@ -254,7 +254,7 @@ class Campeonato():
 
             # Chama o método para limpar o terminal.
             self.limparTerminal()
-            
+
             # Chama o método iniciarRodada.
             self.iniciarRodada()
             # Chama o método para exibir a tabela após o fim da rodada.
