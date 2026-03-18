@@ -5,7 +5,7 @@ import itertools
 import subprocess
 # Vou usar essa biblioteca para saber qual sistema operacional o usuario está usando.
 import platform
-#
+# Para controlar a exibição no terminal.
 import time
 
 
@@ -237,10 +237,12 @@ class Campeonato():
         # Cabeçalho da tabela.
         print("\n       --TABELA DE CLASSIFICAÇÃO--\n")
         # Percorre a lista tabela e ao mesmo tempo gera um contador(i) começando do número 1. 
-        for i, time in enumerate(tabela, 1):
+        for i, t in enumerate(tabela, 1):
 
+            # Definindo o tempo que demora para cada item da lista aparecer.
+            time.sleep(0.2)
             # Exibe as informações de cada time, {time.nome:12} é para cada time ocupar o mesmo espaço(12).
-            print(f"{i}º {time.nome:12} | P:{time.pontos:2} | V:{time.vitorias:2} | E:{time.empates:2} | D:{time.derrotas:2} | SG:{time.saldo_gols:2} |")
+            print(f"{i}º {t.nome:12} | P:{t.pontos:2} | V:{t.vitorias:2} | E:{t.empates:2} | D:{t.derrotas:2} | SG:{t.saldo_gols:2} |")
 
     # Método para rodar o campeonato completo.
     def iniciarCampeonato(self):
