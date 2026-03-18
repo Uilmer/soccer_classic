@@ -246,8 +246,8 @@ class Campeonato():
         # Chama o método jogoscampeonato.
         self.jogosCampeonato()
 
-        # Chama o método para exibir a tabela antes de iniciar o campeonato.
-        self.tabelaCampeonato()
+        # Chama o método para exibir a introdução do campeonato.
+        self.introCampeonato()
 
         # Loop que vai rodar até acabar todos os jogos da lista disputas.
         while self.disputas:
@@ -270,6 +270,20 @@ class Campeonato():
         subprocess.run(comando, shell=True)
     
 
+    # Método para exibir a introdução do campeonato.
+    def introCampeonato(self):
+
+        print("*" * 50)
+        print(f"\n        soccer classic campeonato\n".upper())
+        print("*" * 50)
+
+        # Chama o método para exibir a tabela inicial.
+        self.tabelaCampeonato()
+
+        # Logica para iniciar a rodada.
+        input("\nPRESSIONE [ENTER] PARA INICIAR O CAMPEONATO...")
+        # Chama método para limpar a tela.
+        self.limparTerminal()
 
 
 
