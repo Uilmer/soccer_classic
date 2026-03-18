@@ -236,6 +236,26 @@ class Campeonato():
             # Exibe as informações de cada time, {time.nome:12} é para cada time ocupar o mesmo espaço(12).
             print(f"{i}º {time.nome:12} | P:{time.pontos} | V:{time.vitorias} | E:{time.empates} | D:{time.derrotas} | SG:{time.saldo_gols}")
 
+# Método para rodar o campeonato completo.
+    def iniciarCampeonato(self):
+
+        # Chama o método jogoscampeonato.
+        self.jogosCampeonato()
+
+        # Chama o método para exibir a tabela antes de iniciar o campeonato.
+        self.tabelaCampeonato()
+
+        # Loop que vai rodar até acabar todos os jogos da lista disputas.
+        while self.disputas:
+
+            # Chama o método iniciarRodada.
+            self.iniciarRodada()
+            # Chama o método para exibir a tabela após o fim da rodada.
+            self.tabelaCampeonato()
+
+            # Logica para iniciar a proxima rodada.
+            input("\nPRESSIONE [ENTER] PARA INICIAR A PROXIMA RODADA...")
+
 
 
 
@@ -246,8 +266,5 @@ class Campeonato():
 # Cria a variavel copa que é um objeto da class Campeonato. 
 obj_copa = Campeonato()
 
-# Chama o método jogosCampeonato do objeto copa.
-obj_copa.jogosCampeonato()
-# Chama o método iniciarRodada do objeto copa.
-obj_copa.iniciarRodada()
-obj_copa.tabelaCampeonato()
+# Chama o método para iniciar o jogo.
+obj_copa.iniciarCampeonato()
