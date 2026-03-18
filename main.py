@@ -252,6 +252,9 @@ class Campeonato():
         # Loop que vai rodar até acabar todos os jogos da lista disputas.
         while self.disputas:
 
+            # Chama o método para limpar o terminal.
+            self.limparTerminal()
+            
             # Chama o método iniciarRodada.
             self.iniciarRodada()
             # Chama o método para exibir a tabela após o fim da rodada.
