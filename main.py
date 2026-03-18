@@ -1,6 +1,10 @@
 import random
 # itertools para criar a combinação onde cada time se enfrenta.
 import itertools
+# Biblioteca  para "conversar" com o sistema operacional.
+import subprocess
+# Vou usar essa biblioteca para saber qual sistema operacional o usuario está usando.
+import platform
 
 
 
