@@ -5,6 +5,8 @@ import itertools
 import subprocess
 # Vou usar essa biblioteca para saber qual sistema operacional o usuario está usando.
 import platform
+#
+import time
 
 
 
