@@ -224,7 +224,7 @@ class Campeonato():
             time_a.pontos += 1
             time_b.pontos += 1
 
-# Método para "desenhar" a tabela do campeonato.
+    # Método para "desenhar" a tabela do campeonato.
     def tabelaCampeonato(self):
         
         # Cria uma lista baseada na lista self.times.
@@ -240,7 +240,7 @@ class Campeonato():
             # Exibe as informações de cada time, {time.nome:12} é para cada time ocupar o mesmo espaço(12).
             print(f"{i}º {time.nome:12} | P:{time.pontos} | V:{time.vitorias} | E:{time.empates} | D:{time.derrotas} | SG:{time.saldo_gols}")
 
-# Método para rodar o campeonato completo.
+    # Método para rodar o campeonato completo.
     def iniciarCampeonato(self):
 
         # Chama o método jogoscampeonato.
@@ -259,6 +259,16 @@ class Campeonato():
 
             # Logica para iniciar a proxima rodada.
             input("\nPRESSIONE [ENTER] PARA INICIAR A PROXIMA RODADA...")
+
+
+    # Método para limpar o terminal.
+    def limparTerminal(self):
+
+        # Verifica qual sistema operacional o usuario está usando.
+        comando = "cls" if platform.system() == "Windows" else "clear"
+        # Executa o comando no sistema operacional.
+        subprocess.run(comando, shell=True)
+    
 
 
 
