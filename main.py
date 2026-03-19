@@ -7,6 +7,8 @@ import subprocess
 import platform
 # Para controlar a exibição no terminal.
 import time
+# Dicionario com função para narração dinamica.
+import locutor
 
 
 
@@ -114,7 +116,8 @@ class Campeonato():
     def iniciarPartida(self, time_a, time_b):
 
         # Exibi qual é o jogo atual.
-        print(f"\n      {time_a.nome} X {time_b.nome}\n")
+        print(f"\n        {time_a.nome} X {time_b.nome}\n")
+        time.sleep(1)
 
         #--- PREPARAÇÕES DA PARTIDA ---#
 
@@ -137,7 +140,6 @@ class Campeonato():
         for i in range(10):
 
             #--- Verificação para definir qual time está no ataque e qual time está defendendo. ---#
-
             if  posse_da_bola == "time_a":
                 # time_a como atacante e time_b como defensor.
                 time_atacante, time_defensor = time_a, time_b
@@ -155,39 +157,62 @@ class Campeonato():
                 time_atacante.pontosDisputa()
                 time_defensor.pontosDisputa()
 
-                # Se o ponto ofensivo do atacante for maior que o ponto defensivo do defensor.
-                # Aqui eu coloco 
-                if time_atacante.ponto_ofensivo > time_defensor.ponto_defensivo and disputa != "Gol":
+                # Verifica  qual é a zona de disputa.
+                if disputa != "Gol":
 
-                    print(f"{time_atacante.nome} vence a disputa de {disputa}")
-                
-                elif time_defensor.ponto_defensivo >= time_atacante.ponto_ofensivo:
+                    # Verifica se o atacante tem mais ponto que o defensor.
+                    if time_atacante.ponto_ofensivo > time_defensor.ponto_defensivo:
+                        # Chama a função do arquivo locutor.py para gerar uma narração dinamica.
+                        fala = locutor.sorteioLocutor(disputa, "sucesso")
+                        print(f"{time_atacante.nome}: {fala}")
+                        # Gerencia o tempo de cada print sendo exibido.
+                        time.sleep(2)
 
-                    print(f"{time_atacante.nome} falha na disputa de {disputa}")
-                    
-                    posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
-                    break
-                
-                elif time_atacante.ponto_ofensivo > time_defensor.ponto_defensivo and disputa == "Gol":
-
-                    print(f"GOOOOOOOOL! {time_atacante.nome} marca ")
-
-                    # Verifica qual time fez o gol.
-                    if time_atacante == time_a:
-                        # Contabiliza o gol atualizando a variavel que armazena os gols do time.
-                        gols_time_a += 1
-                    
                     else:
 
-                        gols_time_b += 1
+                        fala = locutor.sorteioLocutor(disputa, "fracasso")
+                        print(f"{time_atacante.nome}: {fala}")
+                        time.sleep(2)
+                        # Faz a troca da posse de bola quando o time ofensivo perde.
+                        posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
+                        break
+                    
+                elif disputa == "Gol":
 
-                    # Atualiza o atributo saldo_gols do time.
-                    time_atacante.saldo_gols += 1
+                    if time_atacante.ponto_ofensivo > time_defensor.ponto_defensivo:
 
-                    # Realiza a troca da posse de bola.
-                    posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
-                    break
-            
+                        # Váriavel fala está armazenando o return da função.
+                        fala = locutor.sorteioLocutor(disputa, "sucesso")
+                        print(f"{time_atacante.nome}: {fala}")
+                        time.sleep(2)
+                        print(f"           GOOOOOOOOOOOOL! {time_atacante.nome} MARCA!")
+
+                        # Verifica qual time está no ataque.
+                        if time_atacante == time_a:
+                            # Acrescenta +1 no placar.
+                            gols_time_a += 1
+                        
+                        else:
+                            gols_time_b += 1
+                    
+                        # Atualiza o atributo saldo de gols do time atacante.
+                        time_atacante.saldo_gols += 1
+                        
+                        # Realiza a troca de posse de bola.
+                        posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
+                        break
+
+
+                    else:
+
+                        fala = locutor.sorteioLocutor(disputa, "fracasso")
+                        print(f"{time_atacante.nome}: {fala}")
+                        time.sleep(2)
+
+                        posse_da_bola = self.trocaPosseDeBola(posse_da_bola)
+                        break
+
+
         # Mensagem fim de jogo.
         print(f"\n  O árbitro apita!!! fim de jogo.")
         # Exibir o placar final da disputa.
@@ -250,6 +275,7 @@ class Campeonato():
             # Exibe as informações de cada time, {time.nome:12} é para cada time ocupar o mesmo espaço(12).
             print(f"{i}º {t.nome:12} | P:{t.pontos:2} | V:{t.vitorias:2} | E:{t.empates:2} | D:{t.derrotas:2} | SG:{t.saldo_gols:2} |")
 
+
     # Método para rodar o campeonato completo.
     def iniciarCampeonato(self):
 
@@ -264,7 +290,8 @@ class Campeonato():
 
             # Chama o método para limpar o terminal.
             self.limparTerminal()
-
+            # Print informando a rodada atual(+1 o atributo self rodada inicia em 0).
+            print(f"\n          {self.rodada + 1}º RODADA")
             # Chama o método iniciarRodada.
             self.iniciarRodada()
             # Atualiza o atributo self.rodada
