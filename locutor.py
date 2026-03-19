@@ -1,8 +1,24 @@
 import random
 
+# Função para sortear uma narração
+def sorteioLocutor(zona, jogada):
+
+    # Verifica se a jogada foi um sucesso ou fracasso.
+    if jogada == "sucesso":
+
+        # Seleciona a frase que vai servir de fala_locutor.
+        fala_locutor = random.choice(sucesso[zona])
+        # Retorna fala_locutor.
+        return fala_locutor
+    
+    else:
+
+        fala_locutor = random.choice(fracasso[zona])
+        return fala_locutor
+
+
 # Dicionario para as narrações.
 
-# Sucesso.
 
 sucesso = {
     "Meio_Campo":[
@@ -27,7 +43,6 @@ sucesso = {
         "Soltou a bomba! Um chute seco que estufou a rede.",
         "Chute cruzado e rasteiro; a bola beijou a rede.",
         "Limpou o goleiro e só teve o trabalho de empurrar.",
-        "Finalização de primeira! Um tapa de quem conhece.",
     ]
 }
 
@@ -38,7 +53,6 @@ fracasso = {
          "Tentou o drible e se enrolou com a própria perna.",
          "Dormiu com a bola e perdeu a posse na pressão.",
          "Errou o domínio e a bola escapou como sabonete.",
-         "Corte errado; deu a bola no pé do volante adversário.",
     ],
 
     "Zaga":[
@@ -47,7 +61,6 @@ fracasso = {
         "Travado na hora H! O zagueiro chegou de carrinho.",
         "Perdeu no ombro a ombro e foi ao chão.",
         "Cercado e engolido pela marcação; perdeu a bola.",
-        "Se perdeu na própria finta e a zaga limpou o trilho.",
     ],
 
     "Gol":[
